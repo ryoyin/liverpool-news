@@ -18,6 +18,9 @@ class PageController extends Controller
         $standings = Http::withHeaders(['X-Auth-Token' => $this->fd_token])->get('http://api.football-data.org/v2/competitions/2021/standings');
         // dd($standings->json());
 
+        $teams = Http::withHeaders(['X-Auth-Token' => env('FOOTBALL_ORG_TOKEN')])->get('http://api.football-data.org/v2/competitions/2021/teams');
+        dd($teams->json());
+
         // liverpool id 64
         $liverpool_matches = Http::withHeaders(['X-Auth-Token' => $this->fd_token])->get('http://api.football-data.org/v2/teams/64/matches/');
         $liverpool_matches = $liverpool_matches['matches'];
