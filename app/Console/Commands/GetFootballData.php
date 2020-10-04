@@ -107,10 +107,17 @@ class GetFootballData extends Command
             $new_match->save();
         }
 
-        // $team = Http::withHeaders(['X-Auth-Token' => env('FOOTBALL_ORG_TOKEN')])->get('http://api.football-data.org/v2/teams/678');
-        // $team = $team->json();
-
-        // dd($team);
+        // get team squard
+        // $team = Http::withHeaders(['X-Auth-Token' => env('FOOTBALL_ORG_TOKEN')])->get('http://api.football-data.org/v2/teams/64');
+        // dd($team->json());
+        // "id" => 11777
+        // "name" => "Harry Wilson"
+        // "position" => "Midfielder"
+        // "dateOfBirth" => "1997-03-22T00:00:00Z"
+        // "countryOfBirth" => "Wales"
+        // "nationality" => "Wales"
+        // "shirtNumber" => null
+        // "role" => "PLAYER"
         // exit;
 
     }

@@ -166,13 +166,18 @@
 
       <!-- Start Preamble -->
       <div class="preamble text-center col-lg-10 col-lg-offset-1">
-        <h4>This website is mainly for showing and practising my skillset.</h4>
+        <h4>MATCH CENTRE: Live build-up to Aston Villa v Liverpool</h4>
+        <p>
+          Visit our Match Centre now to follow all of the build-up, live updates and reaction as Liverpool visit Aston Villa in the Premier League.<br><br>
+          <a href="https://www.liverpoolfc.com/news">https://www.liverpoolfc.com/news</a>
+        </p>
+        {{-- <h4>This website is mainly for showing and practising my skillset.</h4>
         <ol>
           <li>1. This web site is built on Laravel</li>
           <li>2. Route, Controller, Model, Migration, Eloquent ORM are used</li>
           <li>3. All source code can be found at github.com. <a href="https://github.com/ryoyin/liverpool-news" target="_blank">https://github.com/ryoyin/liverpool-news</a></li>
           <li>4. I will keep adding new features to this website until I found a job at England.</li>
-        </ol>
+        </ol> --}}
       </div>
       <!-- End Preamble -->
 
@@ -183,7 +188,7 @@
     <ul class="nav nav-tabs list-inline horizontal-tab" role="tablist">
       <li class="active"><a href="#matches" role="tab" data-toggle="tab">Matches</a>
       </li>
-      <li class=""><a href="#trainings" role="tab" data-toggle="tab">Trainings</a>
+      <li class=""><a href="#trainings" role="tab" data-toggle="tab">League Table</a>
       </li>
     </ul>
     <!-- End Nav-Tabs -->
@@ -232,7 +237,7 @@
                 </div>
                 <footer class="schedule">
                   <span class="team-name">{{ $currentMatch->home_team->venue }}</span>                  
-                  <span class="time">{{ \Carbon\Carbon::parse($currentMatch->datetime)->tz('Europe/London')->format('t M H:i') }}</span>
+                  <span class="time">{{ \Carbon\Carbon::parse($currentMatch->datetime)->tz('Europe/London')->format('d M H:i') }}</span>
                 </footer>
               </div>
               <div class="team">
@@ -258,7 +263,7 @@
                     </div>
                     <div class="schedule">
                       {{-- <span class="team-name">{{ $match->home_team->venue }}</span> --}}
-                      <span class="time">{{ \Carbon\Carbon::parse($match->datetime)->tz('Europe/London')->format('t M H:i') }}</span>
+                      <span class="time">{{ \Carbon\Carbon::parse($match->datetime)->tz('Europe/London')->format('d M H:i') }}</span>
                     </div>
                     <div class="team right text-right">
                       <span>{{ $match->away_team->name }}</span>

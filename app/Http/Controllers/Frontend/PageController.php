@@ -16,10 +16,6 @@ class PageController extends Controller
 
     public function index()
     {
-        $team = Http::withHeaders(['X-Auth-Token' => env('FOOTBALL_ORG_TOKEN')])->get('http://api.football-data.org/v2/teams/64');
-        dd($team->json());
-        exit;
-
         $banners = Banner::all();
 
         $leagueConfig = LeagueConfigs::where('config_name', 'matchday')->first();
