@@ -6,30 +6,42 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Models\Banner;
+use App\Models\Team;
+use App\Models\LeagueConfigs;
+use App\Models\Standing;
+use App\Models\ClubMatch;
 
 class PageController extends Controller
-{
-    private $fd_token = '8e543d2e035642e38bc537b14c1026e2';
+{   
 
     public function index()
     {
+        $team = Http::withHeaders(['X-Auth-Token' => env('FOOTBALL_ORG_TOKEN')])->get('http://api.football-data.org/v2/teams/64');
+        dd($team->json());
+        exit;
+
         $banners = Banner::all();
 
-        $standings = Http::withHeaders(['X-Auth-Token' => $this->fd_token])->get('http://api.football-data.org/v2/competitions/2021/standings');
-        // dd($standings->json());
+        $leagueConfig = LeagueConfigs::where('config_name', 'matchday')->first();
+        $matchday = $leagueConfig->config_value;
 
-        $teams = Http::withHeaders(['X-Auth-Token' => env('FOOTBALL_ORG_TOKEN')])->get('http://api.football-data.org/v2/competitions/2021/teams');
-        dd($teams->json());
+        $standings = Standing::all();
 
-        // liverpool id 64
-        $liverpool_matches = Http::withHeaders(['X-Auth-Token' => $this->fd_token])->get('http://api.football-data.org/v2/teams/64/matches/');
-        $liverpool_matches = $liverpool_matches['matches'];
+        $standings = Standing::all();
 
+        $currentMatch = ClubMatch::where('matchday', $matchday)->first();
+
+        $clubMatches = ClubMatch::where('status', 'SCHEDULED')->get();
+        
         $data = [
+            'banners'   => $banners,
+            'matchday' => $matchday,
             'standings' => $standings,
-            'banners' => $banners,
+            'currentMatch' => $currentMatch,
+            'clubMatches' => $clubMatches
         ];
 
         return view('frontend.index', $data);
     }
+
 }

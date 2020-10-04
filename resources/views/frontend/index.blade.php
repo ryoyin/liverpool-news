@@ -212,31 +212,35 @@
               <h4 class="border">Latest Result</h4>
               <div class="team">
                 <figure>
-                  <img src="{{ asset('storage/resources/img/badge/Afc_bournemouth.svg') }}" alt="" class="team-background">
+                  <img src="{{ $currentMatch->home_team->crest_url }}" alt="" class="team-background">
                   {{-- <img src="storage/resources/img/team1-logo.png" alt="" class="team-logo"> --}}
                   <figcaption>
-                    FC Lorem
+                    {{ $currentMatch->home_team->name }}
                   </figcaption>
                 </figure>
               </div>
               <div class="match-details">
-                <header class="match-name"><h5>Match {{ $standings['season']['currentMatchday'] }}</h5></header>
-                <div class="score">
-                  <span class="color">1</span>
-                  <span>:</span>
-                  <span>1</span>
+                <header class="match-name"><h5>Match {{ $matchday }}</h5></header>
+                <div class="score">                  
+                  @if($currentMatch->status == 'SCHEDULED')
+                    <span style="font-size:12px;">Comming Soon</span>
+                  @else
+                    <span class="color">1</span>
+                    <span>:</span>
+                    <span>1</span>
+                  @endif
                 </div>
                 <footer class="schedule">
-                  <span class="team-name">Sao Paolo</span>
-                  <span class="time">30 May 23:00</span>
+                  <span class="team-name">{{ $currentMatch->home_team->venue }}</span>                  
+                  <span class="time">{{ \Carbon\Carbon::parse($currentMatch->datetime)->tz('Europe/London')->format('t M H:i') }}</span>
                 </footer>
               </div>
               <div class="team">
                 <figure>
-                  <img src="storage/resources/img/team2.jpg" alt="" class="team-background">
+                  <img src="{{ $currentMatch->away_team->crest_url }}" alt="" class="team-background">
                   {{-- <img src="storage/resources/img/team2-logo.png" alt="" class="team-logo"> --}}
                   <figcaption>
-                    AFC Ipsum
+                    {{ $currentMatch->away_team->name }}
                   </figcaption>
                 </figure>
               </div>
@@ -247,20 +251,22 @@
             <div class="upcoming col-lg-6 col-lg-offset-0 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 clearfix">
               <h4 class="border">Upcoming Matches</h4>
               <ul class="matches custom-list">
-                <li class="match">
-                  <div class="team text-left">
-                    <img src="storage/resources/img/team-upcoming.png" alt=""><span>AFC Consequat</span>
-                  </div>
-                  <div class="schedule">
-                    <span class="team-name">Sao Paolo</span>
-                    <span class="time">30 May 23:00</span>
-                  </div>
-                  <div class="team right text-right">
-                    <span>Magenta FC</span>
-                    <img src="storage/resources/img/team-upcoming2.png" alt="">
-                  </div>
-                </li>
-                <li class="match">
+                @foreach($clubMatches as $match)
+                  <li class="match">
+                    <div class="team text-left">
+                      <img src="{{ $match->home_team->crest_url }}" alt=""><span>{{ $match->home_team->name }}</span>
+                    </div>
+                    <div class="schedule">
+                      {{-- <span class="team-name">{{ $match->home_team->venue }}</span> --}}
+                      <span class="time">{{ \Carbon\Carbon::parse($match->datetime)->tz('Europe/London')->format('t M H:i') }}</span>
+                    </div>
+                    <div class="team right text-right">
+                      <span>{{ $match->away_team->name }}</span>
+                      <img src="{{ $match->away_team->crest_url }}" alt="">
+                    </div>
+                  </li>
+                @endforeach
+                {{-- <li class="match">
                   <div class="team text-left">
                     <img src="storage/resources/img/team-upcoming3.png" alt=""><span>Andrea FC</span>
                   </div>
@@ -324,11 +330,11 @@
                     <span>Altair FC</span>
                     <img src="storage/resources/img/team-upcoming6.png" alt="">
                   </div>
-                </li>
+                </li> --}}
               </ul>
               <a class="button text-left prev"><i class="fa fa-angle-left"></i><span>Previous</span></a>
               <div class="match-week">
-                <div class="datepicker-inner" data-date="12/03/2012">Week <span class="count">7</span><i class="fa fa-angle-down"></i></div>
+                
               </div>
               <a class="button text-right next"><span>Next</span><i class="fa fa-angle-right"></i></a>
             </div>
