@@ -10,6 +10,7 @@ use App\Models\Team;
 use App\Models\LeagueConfigs;
 use App\Models\Standing;
 use App\Models\ClubMatch;
+use App\Models\Player;
 
 class PageController extends Controller
 {   
@@ -28,13 +29,16 @@ class PageController extends Controller
         $currentMatch = ClubMatch::where('matchday', $matchday)->first();
 
         $clubMatches = ClubMatch::where('status', 'SCHEDULED')->get();
+
+        $players = Player::all();
         
         $data = [
             'banners'   => $banners,
             'matchday' => $matchday,
             'standings' => $standings,
             'currentMatch' => $currentMatch,
-            'clubMatches' => $clubMatches
+            'clubMatches' => $clubMatches,
+            'players' => $players,
         ];
 
         return view('frontend.index', $data);

@@ -5,12 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Standing extends Model
+class Player extends Model
 {
     use HasFactory;
-
-    public function team()
-    {
-        return $this->hasOne('App\Models\Team', 'team_id', 'team_id');
-    }
 }

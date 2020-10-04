@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 use App\Models\Team;
+use App\Models\Player;
 
 class FootballInitial extends Command
 {
@@ -45,6 +46,8 @@ class FootballInitial extends Command
         $teams = Http::withHeaders(['X-Auth-Token' => env('FOOTBALL_ORG_TOKEN')])->get('http://api.football-data.org/v2/competitions/'.$competition.'/teams');
         $teams = $teams['teams'];
 
+        Team::query()->truncate();
+
         foreach($teams as $team) {
 
             $newTeam = New Team;
@@ -61,5 +64,21 @@ class FootballInitial extends Command
             $newTeam->venue = $team['venue'];
             $newTeam->save();
         }
+
+        // get team squad
+        $team = Http::withHeaders(['X-Auth-Token' => env('FOOTBALL_ORG_TOKEN')])->get('http://api.football-data.org/v2/teams/64');
+        $squad = $team['squad'];
+
+        Player::query()->truncate();
+
+        foreach($squad as $player) {
+            var_dump($player);
+            $new_player = New Player;
+            $new_player->name = $player['name'];
+            $new_player->position = $player['position'];
+            $new_player->number = $player['shirtNumber'];
+            $new_player->save();
+        }
+
     }
 }
