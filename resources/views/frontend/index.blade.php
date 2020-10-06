@@ -360,15 +360,15 @@
         <div class="tab-pane fade active in" id="senior-team">
 
           <!-- Start Team-Players -->
-          @foreach($players as $player)
-            <div class="team-players">
-              <div class="player-profile">
-                <img src="storage/resources/img/team-player6.jpg" alt="" class="thumbnail">
-                {{-- <span class="number">21</span> --}}
-                <span class="name">{{ $player->name }}</span>
-              </div>
+          <div class="team-players">
+            @foreach($players as $player)
+            <div class="player-profile">
+              <img src="storage/resources/img/team-player6.jpg" alt="" class="thumbnail">
+              {{-- <span class="number">{{ $player->number }}</span> --}}
+              <span class="name">{{ $player->name }}</span>
             </div>
-          @endforeach
+            @endforeach
+          </div>
           <!-- End Team-Players -->
 
         </div>
