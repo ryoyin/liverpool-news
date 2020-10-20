@@ -24,8 +24,6 @@ class PageController extends Controller
 
         $standings = Standing::all();
 
-        $standings = Standing::all();
-
         $currentMatch = ClubMatch::where('matchday', $matchday)->first();
 
         $clubMatches = ClubMatch::where('status', 'SCHEDULED')->get();

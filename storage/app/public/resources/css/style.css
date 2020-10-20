@@ -6490,3 +6490,10 @@ select {
   text-align: center;
   cursor: pointer;
 }
+.code-photo {
+  height: 170px;
+  overflow: auto;
+}
+.code-photo img {
+  width: 100%;
+}

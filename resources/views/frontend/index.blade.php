@@ -144,8 +144,8 @@
         <div class="item">
         <img src="{{ $banner->image_path }}" alt="{{ $banner->alt }}">
           <div class="slide-content col-lg-8 col-lg-offset-2 col-md-12 col-sm-12 text-center">          
-            <h1>{{ $banner->caption }}</h1>
-            <p>{{ $banner->description }}</p>
+            {{-- <h1>{{ $banner->caption }}</h1> --}}
+            {{-- <p>{{ $banner->description }}</p> --}}
             {{-- <a href="#" class="button"><span>Read More</span><i class="fa fa-arrow-circle-right"></i></a> --}}            
           </div>
         </div>
@@ -166,11 +166,68 @@
 
       <!-- Start Preamble -->
       <div class="preamble text-center col-lg-10 col-lg-offset-1">
-        <h4>MATCH CENTRE: Live build-up to Aston Villa v Liverpool</h4>
+        <h4>My skills</h4>
         <p>
+          Experienced over 10 years: PHP, MySQL, Laravel, jQuery, HTML, CSS<br>
+          Languages used in some projects: Python, Ruby on Rails, React.js
+          Tools: Git, Docker (laradock), Visual Studio Code
+        </p>
+
+        <h4>Code Sample</h4>
+        <p>
+          It is available at Github: <a href="https://github.com/ryoyin/liverpool-news.git" target="_blank">https://github.com/ryoyin/liverpool-news.git</a>
+          <br><br>
+          1. This website built with Laravel.<br>
+          2. Matches, League Table and Players data are from https://www.football-data.org/.<br>
+          3. The above data retrieve via API request wrote in a console command and stored in the database.
+        </p>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <h5>DB Migraton</h5>
+            <div class="code-photo">
+              <img src="storage/resources/img/code/migration_1.png">
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <h5>Eloquent ORM</h5>
+            <div class="code-photo">
+              <img src="storage/resources/img/code/orm_1.png">
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <h5>DB Seeding</h5>
+            <div class="code-photo">
+              <img src="storage/resources/img/code/seeding_1.png">
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <h5>API Request</h5>
+            <div class="code-photo">
+              <img src="storage/resources/img/code/console_command_1.png">
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <h5>Page Controller</h5>
+            <div class="code-photo">
+              <img src="storage/resources/img/code/controller_1.png">
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <h5>Blade Frontend Next Match</h5>
+            <div class="code-photo">
+              <img src="storage/resources/img/code/next_match_1.png">
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <h5>Blade Frontend League Table</h5>
+            <div class="code-photo">
+              <img src="storage/resources/img/code/league_table_1.png">
+            </div>
+          </div>
+        </p>
+        {{-- <p>
           Visit our Match Centre now to follow all of the build-up, live updates and reaction as Liverpool visit Aston Villa in the Premier League.<br><br>
           <a href="https://www.liverpoolfc.com/news">https://www.liverpoolfc.com/news</a>
-        </p>
+        </p> --}}
         {{-- <h4>This website is mainly for showing and practising my skillset.</h4>
         <ol>
           <li>1. This web site is built on Laravel</li>
