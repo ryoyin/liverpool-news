@@ -168,9 +168,9 @@
       <div class="preamble text-center col-lg-10 col-lg-offset-1">
         <h4>My skills</h4>
         <p>
-          Experienced over 10 years: PHP, MySQL, Laravel, jQuery, HTML, CSS<br>
-          Languages used in some projects: Python, Ruby on Rails, React.js
-          Tools: Git, Docker (laradock), Visual Studio Code
+          <b>Experienced over 10 years:</b> PHP, MySQL, Laravel, jQuery, HTML, CSS<br>
+          <b>Languages used in some projects:</b> Python, Ruby on Rails, React.js<br>
+          <b>Tools:</b> Git, Docker (laradock), Visual Studio Code
         </p>
 
         <h4>Code Sample</h4>
